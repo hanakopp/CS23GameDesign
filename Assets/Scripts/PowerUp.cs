@@ -7,8 +7,7 @@ public class PowerUp : MonoBehaviour
         ZombiePlayer player = other.GetComponent<ZombiePlayer>();
         if (player != null)
         {
-            player.UnlockVerticalMovement();
-            Destroy(gameObject); // remove the powerup
+            Destroy(gameObject);
         }
     }
 }
