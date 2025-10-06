@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: e10140d14a866484d9f0abd3d25b13dc
+guid: f89eb644ef389457ba3a1b82e5deb5d6
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4695498974440723850
-    second: gamelogo_0
+      213: -6454359945593732385
+    second: 9sprite_8bit_circle (1)_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,23 +113,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: gamelogo_0
+      name: 9sprite_8bit_circle (1)_0
       rect:
         serializedVersion: 2
-        x: 425
-        y: 314
-        width: 2198
-        height: 1089
+        x: 0
+        y: 0
+        width: 512
+        height: 512
       alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 128, y: 128, z: 128, w: 128}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 67aef318f8c36deb0800000000000000
-      internalID: -4695498974440723850
+      spriteID: fd2406e73d18d66a0800000000000000
+      internalID: -6454359945593732385
       vertices: []
       indices: 
       edges: []
@@ -138,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 52f7e0927e61f426f86ad400abf1c06f
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      gamelogo_0: -4695498974440723850
+      9sprite_8bit_circle (1)_0: -6454359945593732385
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

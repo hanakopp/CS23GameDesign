@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: e10140d14a866484d9f0abd3d25b13dc
+guid: da5f6127ded274ecbb9e6914aa7ce483
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4695498974440723850
-    second: gamelogo_0
+      213: 6276922318388712637
+    second: welcome 24_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: gamelogo_0
+      name: welcome 24_0
       rect:
         serializedVersion: 2
-        x: 425
-        y: 314
-        width: 2198
-        height: 1089
+        x: 0
+        y: 0
+        width: 1440
+        height: 900
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 67aef318f8c36deb0800000000000000
-      internalID: -4695498974440723850
+      spriteID: db4d74e879b1c1750800000000000000
+      internalID: 6276922318388712637
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      gamelogo_0: -4695498974440723850
+      welcome 24_0: 6276922318388712637
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
