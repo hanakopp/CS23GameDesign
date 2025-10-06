@@ -7,6 +7,8 @@ public class ZombiePlayer : MonoBehaviour
     [Header("Movement Settings")]
     public float speed = 3f;
 
+    public GameObject playerArt;
+
     [Header("References")]
     private Rigidbody2D rb;
     private Animator animator;
@@ -15,6 +17,11 @@ public class ZombiePlayer : MonoBehaviour
     private Vector2 moveDirection;
     private Vector2 lastMoveDirection;
 
+    private bool facingRight;
+
+
+
+
     // --- NEW ---
     
 
@@ -22,7 +29,7 @@ public class ZombiePlayer : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer = playerArt.GetComponent<SpriteRenderer>();
 
         rb.gravityScale = 0;
         rb.freezeRotation = true;
@@ -48,14 +55,31 @@ public class ZombiePlayer : MonoBehaviour
             animator.SetFloat("Y", lastMoveDirection.y);
         }
 
-        if (spriteRenderer != null)
-            spriteRenderer.flipX = lastMoveDirection.x < 0f;
+        // if (moveDirection.x < 0) {
+        //     spriteRenderer.flipX = true;
+        // }
+
+        if (spriteRenderer != null && moveDirection.x != 0f)
+            spriteRenderer.flipX = moveDirection.x < 0f;
+
+        
+
+
     }
 
     void FixedUpdate()
     {
         rb.linearVelocity = moveDirection * speed;
     }
+
+    // --- NEW: flips the sprite upon moving left/right
+    // void Flip() 
+    // {
+    //     facingRight = !facingRight;
+    //     Vector3 thescale = transform.localScale;
+    //     theScale.x *= -1;
+    //     transform.localScale = theScale;
+    // }
 
     // --- NEW: call this when the player touches a powerup ---
 

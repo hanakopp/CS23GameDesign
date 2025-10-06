@@ -63,7 +63,8 @@ public class PlayerMoveAimShoot : MonoBehaviour{
             */
 
             //PROJECTILE
-            GameObject projectile = Instantiate(projectilePrefab, firePoint.position, Quaternion.identity);
+            Quaternion onside = new Quaternion(90f, 0f, 0f, 0f);
+            GameObject projectile = Instantiate(projectilePrefab, firePoint.position, onside);
             projectile.GetComponent<Rigidbody2D>().AddForce(fwd * projectileSpeed, ForceMode2D.Impulse);
       }
 }
