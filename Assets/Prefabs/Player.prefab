@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 1186483359030373994}
   - component: {fileID: 3344412290168884876}
   - component: {fileID: 57282885017646519}
-  - component: {fileID: 2184110568797497942}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -75,8 +74,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65766c206bd9e4cc592d7c2ed331d540, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 4
+  speed: 2
+  SpeedMult: 0
   playerArt: {fileID: 6295312192755463236}
+  SpeedUp: {fileID: 3488387768815843393, guid: a24abcd83897f45949543b6aa93f8e1b, type: 3}
+  FireBase: {fileID: 8484389109284889871}
+  momentum: {x: 0, y: 0}
+  direction: {x: 0, y: 0}
+  UpSprite: {fileID: 3772531477182507251, guid: 72816ca48ad064381b5fe252ffcb4bc6, type: 3}
+  DownSprite: {fileID: -85981165629683769, guid: 72816ca48ad064381b5fe252ffcb4bc6, type: 3}
+  SideSprite: {fileID: 7306805281412999548, guid: 72816ca48ad064381b5fe252ffcb4bc6, type: 3}
+  projpre: {fileID: 7730975613180752537, guid: 750911bdd143e4455b47749cc9e00746, type: 3}
 --- !u!61 &57282885017646519
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -111,7 +119,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.013333321, y: -0.026666641}
+  m_Offset: {x: 0, y: -0.207}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -121,29 +129,8 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.22666645, y: 0.89333344}
+  m_Size: {x: 0.386665, y: 0.4}
   m_EdgeRadius: 0
---- !u!114 &2184110568797497942
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5686917825921109831}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07ce9a5a13e4f4c1197c6661322c7925, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 5
-  cam: {fileID: 0}
-  movement: {x: 0, y: 0}
-  mousePos: {x: 0, y: 0}
-  fireBase: {fileID: 842768888901895998}
-  firePoint: {fileID: 8484389109284889871}
-  projectilePrefab: {fileID: 2642231809718925924, guid: c1f4ca9676dca4f64b78af1e2a2009c5, type: 3}
-  projectileSpeed: 10
-  attackRate: 2
 --- !u!1 &6295312192755463236
 GameObject:
   m_ObjectHideFlags: 0
@@ -218,10 +205,10 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1411040945
+  m_SortingLayer: 1
   m_SortingOrder: 100
-  m_Sprite: {fileID: 21300000, guid: 5329aa45086d243239084d78b5a9274d, type: 3}
+  m_Sprite: {fileID: -85981165629683769, guid: 72816ca48ad064381b5fe252ffcb4bc6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -257,7 +244,7 @@ Transform:
   m_GameObject: {fileID: 7048713913591490133}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.205, y: 0.1, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
