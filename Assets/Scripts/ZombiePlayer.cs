@@ -1,15 +1,37 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.U2D;
 using TMPro;
 
 public class ZombiePlayer : MonoBehaviour
 {
+    private const float orthosize = 3.265625f;
+    private const float orthomax = 6f;
+    private const float zoomrate = 5f;
+
+    [Header("Abilities Unlocked")]
+    public bool ZoomUnlocked;
+    public bool ShootUnlocked;
+    public GameObject Syringe;
+
+
     [Header("Movement Settings")]
     public float speed = 2f;
     public float SpeedMult;
     public GameObject playerArt;
     public GameObject SpeedUp;
+
+
+
+    [Header("Zoom Settings")]
+
+    public bool Zoomed;
+    public Camera mainCam;
+
+    // public PixelPerfectCamera pixelcam;
+
+
 
 
     [Header("TextBoxSettings")]
@@ -56,6 +78,7 @@ public class ZombiePlayer : MonoBehaviour
         FireBase.position = Vector2.zero;
         SpeedMult = 1.0f;
 
+
         //  Finds the console object
         console = GameObject.Find("/RPGtb");
         textbox = GameObject.Find("/RPGtb/OuterConsole/InnerConsole/ConsoleText");
@@ -63,13 +86,20 @@ public class ZombiePlayer : MonoBehaviour
         console.SetActive(false);
         //  Finds the text mesh object
         consoletext = textbox.GetComponent<TMP_Text>();
+
+        GameObject maincamera = GameObject.Find("/Main Camera");
+        mainCam = maincamera.GetComponent<Camera>();
+
+        mainCam.orthographic = true;
+
+        Zoomed = false;
+        ZoomUnlocked = false;
+        Syringe.SetActive(false);
+        ShootUnlocked = false;
     }
 
     void Update()
     {
-        
-
-
         moveDirection.x = Input.GetAxisRaw("Horizontal");
         moveDirection.y = Input.GetAxisRaw("Vertical");
 
@@ -113,17 +143,36 @@ public class ZombiePlayer : MonoBehaviour
             else { direction = Vector2.right ; }
         }
 
+
+
         if (moveDirection != Vector2.zero) {
             Vector2 halfway = 0.5f * (direction).normalized;
             FireBase.localPosition = halfway;
+
         }
-        if (Input.GetKeyDown(KeyCode.Space)) {
+        if (Input.GetKeyDown(KeyCode.Space) && ShootUnlocked) {
             PlayerFire();
+        }
+        if (Input.GetKey(KeyCode.U) && ZoomUnlocked) {
+            PlayerZoomOut();
+        }
+        if (Input.GetKey(KeyCode.I) && ZoomUnlocked) {
+            PlayerZoomIn();
         }
         
 
-        
     }
+
+    void PlayerZoomOut()
+    {
+        mainCam.orthographicSize = Mathf.MoveTowards(mainCam.orthographicSize, orthomax, zoomrate * Time.deltaTime);
+    }
+    void PlayerZoomIn()
+    {
+        mainCam.orthographicSize = Mathf.MoveTowards(mainCam.orthographicSize, orthosize, zoomrate * Time.deltaTime);
+    }
+
+
 
     void FixedUpdate()
     {
@@ -158,22 +207,35 @@ public class ZombiePlayer : MonoBehaviour
         GameObject projectile = Instantiate(projpre, FireBase, false);
         projectile.transform.parent = null;
         projmass = projectile.GetComponent<Rigidbody2D>();
+
         Vector2 force = 50 * direction;
         projmass.AddForce(force, ForceMode2D.Impulse);
     }
 
     //  Upgrades the player's speed
-    void OnCollisionEnter2D(Collision2D speedup) 
+    void OnCollisionEnter2D(Collision2D upgrade) 
     {
-        if (speedup.gameObject.CompareTag("SpeedUp"))
+        if (upgrade.gameObject.CompareTag("SpeedUp"))
         {
             SpeedMult = 2.0f;
             speed = speed * SpeedMult;
             DisplayText("Speed Upgrade Acquired");
-            Destroy(speedup.gameObject, 0.0f);
+            Destroy(upgrade.gameObject, 0.0f);
+        }
+        if (upgrade.gameObject.CompareTag("ShootUp"))
+        {
+            ShootUnlocked = true;
+            Syringe.SetActive(true);
+            DisplayText("You can now fire energy beams. Press Space to fire");
+            Destroy(upgrade.gameObject, 0.0f);
+        }
+        if (upgrade.gameObject.CompareTag("ZoomAbility"))
+        {
+            ZoomUnlocked = true;
+            DisplayText("You can now look further out. Press U to zoom out and I to zoom in.");
+            Destroy(upgrade.gameObject, 0.0f);
         }
     }
-
 
     void DisplayText(string text)
     {
