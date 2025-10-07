@@ -1,13 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class ZombiePlayer : MonoBehaviour
 {
     [Header("Movement Settings")]
-    public float speed = 3f;
-
+    public float speed = 2f;
+    public float SpeedMult;
     public GameObject playerArt;
+    public GameObject SpeedUp;
+
+
+    [Header("TextBoxSettings")]
+    public GameObject console;
+    public GameObject textbox;
+    private TMP_Text consoletext;
+    
 
     [Header("References")]
     private Rigidbody2D rb;
@@ -34,9 +43,7 @@ public class ZombiePlayer : MonoBehaviour
 
     private Rigidbody2D projmass;
 
-
     // --- NEW ---
-    
 
     void Start()
     {
@@ -47,10 +54,21 @@ public class ZombiePlayer : MonoBehaviour
         rb.gravityScale = 0;
         rb.freezeRotation = true;
         FireBase.position = Vector2.zero;
+        SpeedMult = 1.0f;
+
+        //  Finds the console object
+        console = GameObject.Find("/RPGtb");
+        textbox = GameObject.Find("/RPGtb/OuterConsole/InnerConsole/ConsoleText");
+        //  Sets it immediately to inactive
+        console.SetActive(false);
+        //  Finds the text mesh object
+        consoletext = textbox.GetComponent<TMP_Text>();
     }
 
     void Update()
     {
+        
+
 
         moveDirection.x = Input.GetAxisRaw("Horizontal");
         moveDirection.y = Input.GetAxisRaw("Vertical");
@@ -142,7 +160,50 @@ public class ZombiePlayer : MonoBehaviour
         projmass = projectile.GetComponent<Rigidbody2D>();
         Vector2 force = 50 * direction;
         projmass.AddForce(force, ForceMode2D.Impulse);
-
     }
+
+    //  Upgrades the player's speed
+    void OnCollisionEnter2D(Collision2D speedup) 
+    {
+        if (speedup.gameObject.CompareTag("SpeedUp"))
+        {
+            SpeedMult = 2.0f;
+            speed = speed * SpeedMult;
+            DisplayText("Speed Upgrade Acquired");
+            Destroy(speedup.gameObject, 0.0f);
+        }
+    }
+
+
+    void DisplayText(string text)
+    {
+        consoletext.text = text;
+        StartCoroutine("BoxVisible");
+    }
+
+    IEnumerator BoxVisible() 
+    {
+        console.SetActive(true);
+        yield return new WaitForSeconds(5);
+        console.SetActive(false);
+    }
+
+
+    // IEnumerator DisplayText(string text)
+    // {
+    //     console.SetActive(true);
+    //     yield return StartCoroutine("TextBox");
+    //     console.SetActive(false);
+        
+
+    // }
+
+    // IEnumerator TextBox()
+    // {
+    //     // suspend execution for 5 seconds
+    //     yield return new WaitForSeconds(5);
+    //     print("WaitAndPrint " + Time.time);
+    // }
+
 
 }

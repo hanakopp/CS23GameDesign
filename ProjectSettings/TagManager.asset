@@ -7,6 +7,8 @@ TagManager:
   - GameHandler
   - NPC
   - Enemy
+  - SpeedUp
+  - Console
   layers:
   - Default
   - TransparentFX
@@ -19,7 +21,7 @@ TagManager:
   - 
   - 
   - Projectiles
-  - 
+  - Power-ups
   - 
   - 
   - 
