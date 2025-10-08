@@ -14,6 +14,7 @@ public class ZombiePlayer : MonoBehaviour
     public bool ZoomUnlocked;
     public bool ShootUnlocked;
     public GameObject Syringe;
+    private SpriteRenderer SyringeRend;
 
 
     [Header("Movement Settings")]
@@ -80,7 +81,7 @@ public class ZombiePlayer : MonoBehaviour
 
 
         //  Finds the console object
-        console = GameObject.Find("/RPGtb");
+        console = GameObject.Find("/RPGtb/OuterConsole");
         textbox = GameObject.Find("/RPGtb/OuterConsole/InnerConsole/ConsoleText");
         //  Sets it immediately to inactive
         console.SetActive(false);
@@ -96,6 +97,7 @@ public class ZombiePlayer : MonoBehaviour
         ZoomUnlocked = false;
         Syringe.SetActive(false);
         ShootUnlocked = false;
+        SyringeRend = Syringe.GetComponent<SpriteRenderer>();
     }
 
     void Update()
@@ -126,21 +128,18 @@ public class ZombiePlayer : MonoBehaviour
         {
             spriteRenderer.sprite = UpSprite;
             direction = Vector2.up;
-
         }
         if (spriteRenderer != null && moveDirection.y < 0f)
         {
             spriteRenderer.sprite = DownSprite;
             direction = Vector2.down;
         }
-
-
         if (spriteRenderer != null && moveDirection.x != 0f)
         {
             spriteRenderer.sprite = SideSprite;
             spriteRenderer.flipX = moveDirection.x < 0f;
             if (spriteRenderer.flipX) { direction = Vector2.left; }
-            else { direction = Vector2.right ; }
+            else { direction = Vector2.right; }
         }
 
 
@@ -149,6 +148,9 @@ public class ZombiePlayer : MonoBehaviour
             Vector2 halfway = 0.5f * (direction).normalized;
             FireBase.localPosition = halfway;
 
+            //      Kind of a cool animation, but not for idle
+            // Vector3 weaponrotate = new Vector3(0f, 0f, momentum.x);
+            // Syringe.transform.Rotate(weaponrotate);
         }
         if (Input.GetKeyDown(KeyCode.Space) && ShootUnlocked) {
             PlayerFire();
@@ -160,6 +162,10 @@ public class ZombiePlayer : MonoBehaviour
             PlayerZoomIn();
         }
         
+        // if (momentum != Vector2.zero)
+        // Vector3 weaponrotate = new Vector3(momentum.x, momentum.y, )
+        // Syringe.transform.Rotate(new Vector3())
+
 
     }
 
@@ -204,6 +210,12 @@ public class ZombiePlayer : MonoBehaviour
 
     void PlayerFire()
     {
+        StopCoroutine("StowSyringe");
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        Syringe.transform.rotation = Quaternion.Euler(0f, 0f, angle);
+        SyringeParse();
+        StartCoroutine("StowSyringe");
+
         GameObject projectile = Instantiate(projpre, FireBase, false);
         projectile.transform.parent = null;
         projmass = projectile.GetComponent<Rigidbody2D>();
@@ -250,6 +262,12 @@ public class ZombiePlayer : MonoBehaviour
         console.SetActive(false);
     }
 
+    IEnumerator StowSyringe()
+    {
+        yield return new WaitForSeconds(1.5f);
+        Syringe.SetActive(false);
+    }
+
 
     // IEnumerator DisplayText(string text)
     // {
@@ -267,5 +285,13 @@ public class ZombiePlayer : MonoBehaviour
     //     print("WaitAndPrint " + Time.time);
     // }
 
-
+    void SyringeParse() 
+    {
+        if (spriteRenderer.sprite == DownSprite) { 
+            SyringeRend.sortingOrder = 0;
+        } else {              
+            SyringeRend.sortingOrder = -1;
+        }
+        Syringe.SetActive(true);
+    }
 }
