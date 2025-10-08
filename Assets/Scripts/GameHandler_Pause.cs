@@ -56,6 +56,7 @@ public class GameHandler_PauseMenu : MonoBehaviour {
         }
 
         public void SetLevel(float sliderValue){
+                if (sliderValue <= 0f) sliderValue = 0.0001f;
                 mixer.SetFloat("MusicVolume", Mathf.Log10 (sliderValue) * 20);
                 volumeLevel = sliderValue;
         }
