@@ -9,10 +9,10 @@ TagManager:
   - Enemy
   - SpeedUp
   - Console
+  - Breakables
   - ShootUp
   - ZoomAbility
-  - Breakables
-  - Projectile
+  - PauseMenuSlider
   layers:
   - Default
   - TransparentFX
@@ -55,9 +55,6 @@ TagManager:
     locked: 0
   - name: UI
     uniqueID: 1701615037
-    locked: 0
-  - name: Text
-    uniqueID: 1256752561
     locked: 0
   m_RenderingLayers:
   - Default
