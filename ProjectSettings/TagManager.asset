@@ -56,14 +56,5 @@ TagManager:
   - name: UI
     uniqueID: 1701615037
     locked: 0
-<<<<<<< Updated upstream
-=======
-  - name: Text
-    uniqueID: 1256752561
-    locked: 0
-  - name: Player
-    uniqueID: 2592207797
-    locked: 0
->>>>>>> Stashed changes
   m_RenderingLayers:
   - Default
