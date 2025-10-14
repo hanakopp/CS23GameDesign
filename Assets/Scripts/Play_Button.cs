@@ -18,7 +18,7 @@ public class MenuController : MonoBehaviour
     {
         // Load your game scene (replace "GameScene" with your actual scene name)
         SceneManager.LoadScene("Level 1");
-        
+
         // Or load by build index:
         // SceneManager.LoadScene(1);
     }
