@@ -29,7 +29,7 @@ public class GameHandler : MonoBehaviour{
         //        scoreTemp.text = "Score: " + score; }
 
         public void StartGame(){
-                SceneManager.LoadScene("Level1Draft2");
+                SceneManager.LoadScene("Level1");
         }
 
         public void OpenCredits(){
