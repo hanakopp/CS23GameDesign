@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 4308267505764185907}
   - component: {fileID: 3547735471473799197}
   - component: {fileID: 4453472240197506765}
-  - component: {fileID: 9209972768958090704}
+  - component: {fileID: 2655690360653915992}
   m_Layer: 0
   m_Name: bed
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29,8 +29,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -19.82, y: 9.47, z: 0}
-  m_LocalScale: {x: 2.75, y: 2.75, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 2, y: 2, z: 0.72727275}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -127,7 +127,7 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!61 &9209972768958090704
+--- !u!61 &2655690360653915992
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -161,15 +161,15 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.013333321, y: 0.000000059604645}
+  m_Offset: {x: 0, y: -0.05}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.6666667, y: 1}
+    oldSize: {x: 1.6, y: 2.4}
     newSize: {x: 0.6666667, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.58666706, y: 0.84000003}
+  m_Size: {x: 1.6, y: 2.3}
   m_EdgeRadius: 0

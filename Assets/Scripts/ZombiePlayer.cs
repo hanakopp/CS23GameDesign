@@ -6,12 +6,18 @@ using TMPro;
 
 public class ZombiePlayer : MonoBehaviour
 {
+    //      Regular size of the camera projection
     private const float orthosize = 3.265625f;
+    //      Maximum size of the camera projection
     private const float orthomax = 6f;
+    //      Rate of change between zoom positions
     private const float zoomrate = 5f;
 
+
     [Header("Abilities Unlocked")]
+    //      Is the Zoom ability unlocked?
     public bool ZoomUnlocked;
+    //      Is the Shoot ability unlocked?
     public bool ShootUnlocked;
     public GameObject Syringe;
     private SpriteRenderer SyringeRend;
@@ -39,6 +45,11 @@ public class ZombiePlayer : MonoBehaviour
     public GameObject console;
     public GameObject textbox;
     private TMP_Text consoletext;
+
+
+    [Header("InteractionSettings")]
+
+
     
 
     [Header("References")]
