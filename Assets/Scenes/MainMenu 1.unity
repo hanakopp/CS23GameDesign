@@ -131,6 +131,7 @@ GameObject:
   - component: {fileID: 43429926}
   - component: {fileID: 43429925}
   - component: {fileID: 43429924}
+  - component: {fileID: 43429927}
   m_Layer: 5
   m_Name: Resume
   m_TagString: Untagged
@@ -253,6 +254,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 43429922}
   m_CullTransparentMesh: 1
+--- !u!114 &43429927
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 43429922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53654e7b303b147388ca9a5e88a0b5a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &50493367
 GameObject:
   m_ObjectHideFlags: 0
@@ -1954,6 +1967,7 @@ GameObject:
   - component: {fileID: 1626302453}
   - component: {fileID: 1626302452}
   - component: {fileID: 1626302451}
+  - component: {fileID: 1626302454}
   m_Layer: 5
   m_Name: Quit
   m_TagString: Untagged
@@ -2028,7 +2042,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1876693689}
         m_TargetAssemblyTypeName: GameHandler, Assembly-CSharp
-        m_MethodName: RestartGame
+        m_MethodName: QuitGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2076,6 +2090,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1626302449}
   m_CullTransparentMesh: 1
+--- !u!114 &1626302454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1626302449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53654e7b303b147388ca9a5e88a0b5a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &1633535197 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1333062769982321448, guid: a960512fe72814333b4669dd7ea9c4d2, type: 3}
