@@ -13,11 +13,14 @@ TagManager:
   - ShootUp
   - ZoomAbility
   - PauseMenuSlider
+  - Projectile
+  - Interactable
+  - Bed
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Interactables
   - Water
   - UI
   - Characters
